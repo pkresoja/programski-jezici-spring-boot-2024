@@ -40,7 +40,6 @@ public class StudentController {
 
     @PutMapping(path = "/{id}")
     public Student updateStudent(@PathVariable Integer id, @RequestBody StudentModel student) {
-        System.out.println(student);
         return service.updateStudent(id, student);
     }
 
