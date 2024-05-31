@@ -11,4 +11,5 @@ public class StudentModel {
     private String name;
     private String surname;
     private String indeks;
+    private Integer studyProgrammeId;
 }

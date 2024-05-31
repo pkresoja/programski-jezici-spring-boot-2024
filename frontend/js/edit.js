@@ -8,6 +8,7 @@ const sid = document.getElementById('id')
 const name = document.getElementById('name')
 const surname = document.getElementById('surname')
 const indeks = document.getElementById('indeks')
+const study = document.getElementById('study')
 const created = document.getElementById('created')
 const updated = document.getElementById('updated')
 
@@ -25,6 +26,22 @@ fetch('http://localhost:8000/api/student/' + id)
         name.value = data.name
         surname.value = data.surname
         indeks.value = data.indeks
+
+        // Loading study programmes
+        fetch('http://localhost:8000/api/study-programme')
+            .then(rsp => rsp.json())
+            .then(studyData => {
+                studyData.forEach(studyProgramme => {
+                    const option = document.createElement('option')
+                    if (studyProgramme.id === data.studyProgramme.id) {
+                        option.selected = true
+                    }
+                    option.value = studyProgramme.id
+                    option.text = studyProgramme.name
+                    study.appendChild(option)
+                })
+            })
+
         created.value = formatDate(data.createdAt)
         updated.value = formatDate(data.updatedAt)
 
@@ -38,6 +55,7 @@ fetch('http://localhost:8000/api/student/' + id)
                     name: name.value,
                     surname: surname.value,
                     indeks: indeks.value,
+                    studyProgrammeId: study.value
                 })
             })
                 .then(rsp => {

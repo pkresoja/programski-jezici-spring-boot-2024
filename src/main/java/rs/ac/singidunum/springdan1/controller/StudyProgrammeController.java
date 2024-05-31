@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.springdan1.entity.StudyProgramme;
-import rs.ac.singidunum.springdan1.model.StudyProgrammeModel;
+import rs.ac.singidunum.springdan1.model.NameModel;
 import rs.ac.singidunum.springdan1.service.StudyProgrammeService;
 
 import java.util.List;
@@ -29,12 +29,12 @@ public class StudyProgrammeController {
     }
 
     @PostMapping
-    public StudyProgramme create(@RequestBody StudyProgrammeModel model) {
+    public StudyProgramme create(@RequestBody NameModel model) {
         return service.saveStudyProgramme(model);
     }
 
     @PutMapping(path = "/{id}")
-    public StudyProgramme update(@PathVariable Integer id, @RequestBody StudyProgrammeModel model) {
+    public StudyProgramme update(@PathVariable Integer id, @RequestBody NameModel model) {
         return service.updateStudyProgramme(id, model);
     }
 

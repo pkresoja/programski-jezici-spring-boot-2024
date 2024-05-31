@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity(name = "student")
 @NoArgsConstructor
@@ -27,6 +28,18 @@ public class Student {
 
     @Column(nullable = false, unique = true)
     private String indeks;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "study_programme_id", nullable = false)
+    private StudyProgramme studyProgramme;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    List<Course> courses;
 
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

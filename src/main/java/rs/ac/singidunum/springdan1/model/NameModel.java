@@ -7,6 +7,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class StudyProgrammeModel {
+public class NameModel {
     private String name;
 }

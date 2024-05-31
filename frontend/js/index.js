@@ -25,6 +25,7 @@ function fetchStudents(url = '') {
                 copy.querySelector('.name').innerText = student.name
                 copy.querySelector('.surname').innerText = student.surname
                 copy.querySelector('.indeks').innerText = student.indeks
+                copy.querySelector('.study').innerText = student.studyProgramme.name
                 copy.querySelector('.created').innerText = formatDate(student.createdAt)
                 copy.querySelector('.updated').innerText = formatDate(student.updatedAt)
                 copy.querySelector('.edit').href = `./edit.html?id=${student.id}`
