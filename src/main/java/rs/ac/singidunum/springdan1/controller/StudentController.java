@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.springdan1.entity.Student;
 import rs.ac.singidunum.springdan1.model.StudentModel;
+import rs.ac.singidunum.springdan1.model.ToggleCourse;
 import rs.ac.singidunum.springdan1.service.StudentService;
 
 import java.util.List;
@@ -41,6 +42,12 @@ public class StudentController {
     @PutMapping(path = "/{id}")
     public Student updateStudent(@PathVariable Integer id, @RequestBody StudentModel student) {
         return service.updateStudent(id, student);
+    }
+
+    @PutMapping(path = "/course/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void toggleCourse(@PathVariable Integer id, @RequestBody ToggleCourse model) {
+        service.toggleCourseForStudentId(id, model);
     }
 
     @DeleteMapping(path = "/{id}")
