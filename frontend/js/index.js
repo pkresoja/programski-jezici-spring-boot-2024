@@ -29,6 +29,7 @@ function fetchStudents(url = '') {
                 copy.querySelector('.created').innerText = formatDate(student.createdAt)
                 copy.querySelector('.updated').innerText = formatDate(student.updatedAt)
                 copy.querySelector('.edit').href = `./edit.html?id=${student.id}`
+                copy.querySelector('.course-edit').href = `./course.html?id=${student.id}`
                 copy.querySelector('.remove').addEventListener('click', () => {
                     if (confirm(`Zelite obrisati studenta ${student.name} ${student.surname} ${student.indeks}`)) {
                         fetch(`http://localhost:8000/api/student/${student.id}`, {
